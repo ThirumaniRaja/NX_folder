@@ -1,0 +1,15 @@
+<!-- <mat-label>Choose any Geometry tools</mat-label>
+<mat-select style="width: 200px;">
+  <mat-option value="compass" (click)="selectWidgets(0)">compass</mat-option>
+  <mat-option value="ruler" (click)="selectWidgets(1)">ruler</mat-option>
+  <mat-option value="protractor" (click)="selectWidgets(2)">protractor</mat-option>
+  <mat-option value="set square 1">set square 1</mat-option>
+  <mat-option value="set square 2">set square 2</mat-option>
+</mat-select> -->
+<!-- <ng-template widgets></ng-template> -->
+
+<nb-select placeholder="Select One">
+  <nb-option value="compass" (selectionChange)="selectWidgets(0)">compass</nb-option>
+  <nb-option value="ruler" (selectionChange)="selectWidgets(1)">ruler</nb-option>
+  <nb-option value="protractor" (selectionChange)="selectWidgets(2)">protractor</nb-option>
+</nb-select>

@@ -1,0 +1,32 @@
+<!-- <p>nebularcard works!</p> -->
+<div class="mainDiv">
+  <nb-layout>
+    <nb-layout-header>
+    </nb-layout-header>
+
+    <nb-layout-column>
+      <div>
+        <p>nebularcard works!</p>
+
+        <button nbButton nbPopover="Hi, I'm popover!" nbPopoverPlacement="bottom" >click me</button>
+    
+        <!-- <button [nbPopover]="loadcomponent" nbPopoverPlacement = "end" >click me</button>        -->
+      </div>
+    </nb-layout-column>
+    <!-- <div class="sidebar"> -->
+      <nb-sidebar right state="compacted" tag="subtoggle" style="background-color: #22262A;" >
+        <div class="sidebar">
+          <div class="toggleBtn" (click)="subtoggle()">
+            <nb-icon icon="arrow-ios-back-outline" class="custiomIconRight"></nb-icon>
+          </div>
+          <div class="dropDown">
+            <span style="color: white;">Select any two</span>
+            <tataclassedge-widget-dropdown></tataclassedge-widget-dropdown>
+          </div>
+    
+        </div>
+       
+      </nb-sidebar>
+  
+  </nb-layout>
+</div>

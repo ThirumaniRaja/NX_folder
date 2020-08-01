@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tataclassedge/tools": ["libs/tools/src/index.ts"],
+      "widgetslist": ["dist/widgetslist/widgetslist", "dist/widgetslist"],
+      "@tataclassedge/widget-selector": ["libs/widget-selector/src/index.ts"],
+      "@tataclassedge/myboard": ["libs/myboard/src/index.ts"],
+      "@tataclassedge/abc": ["libs/abc/src/index.ts"],
+      "@tataclassedge/common": ["libs/common/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

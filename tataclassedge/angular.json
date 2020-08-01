@@ -1,0 +1,342 @@
+{
+  "version": 1,
+  "projects": {
+    "mathstools": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/mathstools",
+      "sourceRoot": "apps/mathstools/src",
+      "prefix": "tataclassedge",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/mathstools",
+            "index": "apps/mathstools/src/index.html",
+            "main": "apps/mathstools/src/main.ts",
+            "polyfills": "apps/mathstools/src/polyfills.ts",
+            "tsConfig": "apps/mathstools/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/mathstools/src/favicon.ico",
+              "apps/mathstools/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/mathstools/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/mathstools/src/environments/environment.ts",
+                  "with": "apps/mathstools/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mathstools:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mathstools:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mathstools:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/mathstools/tsconfig.app.json",
+              "apps/mathstools/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/mathstools/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mathstools/jest.config.js",
+            "tsConfig": "apps/mathstools/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/mathstools/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "mathstools-e2e": {
+      "root": "apps/mathstools-e2e",
+      "sourceRoot": "apps/mathstools-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/mathstools-e2e/cypress.json",
+            "tsConfig": "apps/mathstools-e2e/tsconfig.e2e.json",
+            "devServerTarget": "mathstools:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mathstools:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/mathstools-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/mathstools-e2e/**"]
+          }
+        }
+      }
+    },
+    "tools": {
+      "projectType": "library",
+      "root": "libs/tools",
+      "sourceRoot": "libs/tools/src",
+      "prefix": "td",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tools/tsconfig.lib.json",
+              "libs/tools/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tools/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tools/jest.config.js",
+            "tsConfig": "libs/tools/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/tools/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "widgetslist": {
+      "projectType": "library",
+      "root": "widgetslist",
+      "sourceRoot": "widgetslist/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "widgetslist/tsconfig.lib.json",
+            "project": "widgetslist/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "widgetslist/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "widgetslist/src/test.ts",
+            "tsConfig": "widgetslist/tsconfig.spec.json",
+            "karmaConfig": "widgetslist/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "widgetslist/tsconfig.lib.json",
+              "widgetslist/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "widget-selector": {
+      "projectType": "library",
+      "root": "libs/widget-selector",
+      "sourceRoot": "libs/widget-selector/src",
+      "prefix": "tataclassedge",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/widget-selector/tsconfig.lib.json",
+              "libs/widget-selector/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/widget-selector/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/widget-selector/jest.config.js",
+            "tsConfig": "libs/widget-selector/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/widget-selector/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "myboard": {
+      "projectType": "library",
+      "root": "libs/myboard",
+      "sourceRoot": "libs/myboard/src",
+      "prefix": "tataclassedge",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/myboard/tsconfig.lib.json",
+              "libs/myboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/myboard/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/myboard/jest.config.js",
+            "tsConfig": "libs/myboard/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/myboard/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "abc": {
+      "projectType": "library",
+      "root": "libs/abc",
+      "sourceRoot": "libs/abc/src",
+      "prefix": "tataclassedge",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/abc/tsconfig.lib.json",
+              "libs/abc/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/abc/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/abc/jest.config.js",
+            "tsConfig": "libs/abc/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/abc/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "common": {
+      "projectType": "library",
+      "root": "libs/common",
+      "sourceRoot": "libs/common/src",
+      "prefix": "tataclassedge",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/tsconfig.lib.json",
+              "libs/common/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/jest.config.js",
+            "tsConfig": "libs/common/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "mathstools"
+}

@@ -1,0 +1,51 @@
+.toggleBtn{
+    position: absolute;
+    top: -85px;
+    left: -18px;
+    padding-left: 8px;
+    background: #1a1c20;
+    color: #248ef6;
+    width: 30px;
+    height: 25px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.mainDiv{
+    border-radius: 3px;
+    opacity: 1;
+    border: solid 1px whitesmoke;
+}
+
+.sidebar{
+    position: relative;
+    top: 70px;
+    right: 0px;
+}
+
+.dropDown{
+    position: absolute;
+    top: -45px;
+    width: fit-content;
+}
+// nb-sidebar.toggleBtn{
+//     position: relative;
+//     top: 130px;
+//     right: 20px;
+//     background: #1a1c20;
+//     color: #248ef6;
+//     width: 30px;
+//     height: 25px;
+//     border-radius: 3px;
+//     cursor: pointer;
+// }
+:host {
+    display: block;
+    margin: 4rem 0;
+  }
+
+  button {
+    margin: 1rem;
+  }
+
+  

@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'admin';
+
+  constructor (){
+    this.xyz();
+  }
+
+  abc (){
+var a = 10;
+
+  }
+  xyz(){
+    var a;
+console.log(a);
+  }
 }

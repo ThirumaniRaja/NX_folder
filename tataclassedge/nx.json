@@ -1,0 +1,45 @@
+{
+  "npmScope": "tataclassedge",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "mathstools": {
+      "tags": []
+    },
+    "mathstools-e2e": {
+      "tags": [],
+      "implicitDependencies": ["mathstools"]
+    },
+    "tools": {
+      "tags": []
+    },
+    "widget-selector": {
+      "tags": []
+    },
+    "myboard": {
+      "tags": []
+    },
+    "abc": {
+      "tags": []
+    },
+    "common": {
+      "tags": []
+    }
+  }
+}
